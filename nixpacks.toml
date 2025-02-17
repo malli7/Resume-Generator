@@ -2,6 +2,6 @@
 nixPkgs = [
     "python312",
     "chromium",
-    "chromedriver",
+    "chromiumDriver",  # Ensures chromedriver is installed
     "glibc"
 ]

@@ -18,7 +18,7 @@ def create_driver_selenium():
     
     ChromeDriverManager().install()
 
-    service = ChromeService("/usr/bin/chromedriver")
+    service = ChromeService("/nix/store/chromiumDriver-unstable/bin/chromedriver")
     return webdriver.Chrome(service=service, options=options)
 
 def HTML_to_PDF(html_content, output_pdf_path):
