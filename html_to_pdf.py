@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 def create_driver_selenium():
     """ Initializes a Chrome WebDriver instance """
     options = webdriver.ChromeOptions()
@@ -12,6 +13,8 @@ def create_driver_selenium():
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--remote-debugging-port=9222") 
+    options.add_argument("--disable-software-rasterizer")
     
     chrome_install = ChromeDriverManager().install()
     folder = os.path.dirname(chrome_install)
