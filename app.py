@@ -51,5 +51,6 @@ def download_resume():
     else:
         return jsonify({'error': f'File {filename} not found'}), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Use Railway's assigned port
+    app.run(host="0.0.0.0", port=port, debug=True)
