@@ -28,7 +28,7 @@ class GPTResume:
     
     def generate_education(self):
         return "\n".join([
-                f"<div class='entry'><p class='education'><b>{edu['education_level']} {'in'} {edu['field_of_study']} | {edu['start_date']} - {edu['year_of_completion']} | {"GPA: "} {edu['GPA']}</b></p> <p class='education'>{edu['institution']}, {edu['location']} </p> </div>"
+                f"<div class='entry'><p class='education'><b>{edu['education_level']} in {edu['field_of_study']} | {edu['start_date']} - {edu['year_of_completion']} | GPA: {edu['GPA']}</b></p> <p class='education'>{edu['institution']}, {edu['location']} </p> </div>"
                 for edu in self.resume_data["education_details"]
             ])
 
