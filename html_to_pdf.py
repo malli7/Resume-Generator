@@ -16,9 +16,11 @@ def create_driver_selenium():
     options.add_argument("--remote-debugging-port=9222") 
     options.add_argument("--disable-software-rasterizer")
     
-    ChromeDriverManager().install()
+    chrome_install = ChromeDriverManager().install()
+    folder = os.path.dirname(chrome_install)
+    chromedriver_path = os.path.join(folder, "chromedriver.exe" if os.name == "nt" else "chromedriver")
 
-    service = ChromeService("/nix/store/chromiumDriver-unstable/bin/chromedriver")
+    service = ChromeService(executable_path=chromedriver_path)
     return webdriver.Chrome(service=service, options=options)
 
 def HTML_to_PDF(html_content, output_pdf_path):

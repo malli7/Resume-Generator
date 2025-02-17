@@ -1,7 +1,0 @@
-[phases.setup]
-nixPkgs = [
-    "python312",
-    "chromium",
-    "chromiumDriver",  # Ensures chromedriver is installed
-    "glibc"
-]
