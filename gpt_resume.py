@@ -38,7 +38,7 @@ class GPTResume:
             messages=[
                 {"role": "system", "content": "You are an AI-powered ATS and hiring expert, specializing in skill matching for high-impact job applications."},
                 {"role": "user", "content": skills_prompt},
-                {"role": "user", "content": f"Here’s the candidate’s resume skills: {self.resume_data["skills"]}"},
+                {"role": "user", "content": f"Here’s the candidate’s resume skills: {self.resume_data['skills']}"},
                 {"role": "user", "content": f"Here’s the job description: {self.job_description}"},
             ]
         )
@@ -50,7 +50,7 @@ class GPTResume:
             messages=[
                 {"role": "system", "content": "You are an AI-powered ATS optimization expert specializing in rewriting and enhancing professional experience for job applications."},
                 {"role": "user", "content": experience_prompt},
-                {"role": "user", "content": f"Here’s the candidate’s work experience: {self.resume_data["experience_details"]}"},
+                {"role": "user", "content": f"Here’s the candidate’s work experience: {self.resume_data['experience_details']}"},
                 {"role": "user", "content": f"Here’s the job description: {self.job_description}"},
             ]
         )
