@@ -1,5 +1,6 @@
 from flask import Flask, request, send_file, jsonify
 import os
+import json
 import yaml
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -26,7 +27,29 @@ def generate_resume():
     
     with open(yaml_path, 'r') as file:
         resume_data = yaml.safe_load(file)
+    print(resume_data)
      
+    gpt_resume = GPTResume(job_description, resume_data)
+    gpt_resume =  gpt_resume.generate_resume()
+    
+    timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    pdf_filename = os.path.join(RESUME_FOLDER, f'resume_{timestamp_str}.pdf')
+    os.makedirs("resumes", exist_ok=True)
+    if(pdf_filename):
+        pdf_filename = pdf_filename
+    else:
+        pdf_filename = f"resumes/resume.pdf"
+    HTML_to_PDF(gpt_resume.get_text(), pdf_filename)
+    
+    return jsonify({'message': 'Resume generated successfully', 'file path': pdf_filename})
+
+@app.route('/generate-resume-json', methods=['POST'])
+def generate_resume_json():
+    data = request.get_json()
+
+    job_description = data['jobDescription']
+    resume_data = json.loads(data['resumeData'])
+    
     gpt_resume = GPTResume(job_description, resume_data)
     gpt_resume =  gpt_resume.generate_resume()
     
