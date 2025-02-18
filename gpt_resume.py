@@ -6,9 +6,9 @@ from prompt_templates import prompt_template
 from prompts import summary_prompt, skills_prompt, experience_prompt,projects_prompt,cert_prompt
 
 
-API_KEY = os.getenv("API_KEY") 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") 
+client = OpenAI(api_key=OPENAI_API_KEY) 
 
-client = OpenAI(api_key=API_KEY)
 
 class GPTResume:
     def __init__(self, job_description, resume_data):

@@ -3,12 +3,11 @@ import os
 import time
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 
 def create_driver_selenium():
-    """ Initializes a Chrome WebDriver instance """
     options = webdriver.ChromeOptions()
+    options.binary_location = "/usr/bin/chromium"  # Explicitly set Chromium path
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
@@ -16,11 +15,9 @@ def create_driver_selenium():
     options.add_argument("--remote-debugging-port=9222") 
     options.add_argument("--disable-software-rasterizer")
     
-    chrome_install = ChromeDriverManager().install()
-    folder = os.path.dirname(chrome_install)
-    chromedriver_path = os.path.join(folder, "chromedriver.exe" if os.name == "nt" else "chromedriver")
+    
+    service = ChromeService("/usr/bin/chromedriver")
 
-    service = ChromeService(executable_path=chromedriver_path)
     return webdriver.Chrome(service=service, options=options)
 
 def HTML_to_PDF(html_content, output_pdf_path):
