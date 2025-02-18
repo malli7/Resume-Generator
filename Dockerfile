@@ -1,5 +1,4 @@
-# Use official Python image
-FROM seleniarm/standalone-chromium:latest
+
 FROM python:3.9-slim AS base
 
 
@@ -17,7 +16,6 @@ RUN pip install --no-cache-dir flask selenium webdriver-manager pyyaml werkzeug 
 # Copy application files
 COPY . .
 
-CMD ["bash", "-c", "OPENAI_API_KEY=$OPENAI_API_KEY python app.py"]
 # Expose the port the app runs on
 EXPOSE 5000
 
