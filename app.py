@@ -15,7 +15,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(RESUME_FOLDER, exist_ok=True)
 
 @app.route('/generate-resume', methods=['POST'])
-def generate_resume():
+async def generate_resume():
     if 'yaml_file' not in request.files or 'jobDescription' not in request.form:
         return jsonify({'error': 'Missing YAML file or job description'}), 400
     
@@ -31,7 +31,7 @@ def generate_resume():
     print(resume_data)
      
     gpt_resume = GPTResume(job_description, resume_data)
-    gpt_resume =  gpt_resume.generate_resume()
+    gpt_resume =  await gpt_resume.generate_resume()
     
     timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     pdf_filename = os.path.join(RESUME_FOLDER, f'resume_{timestamp_str}.pdf')
