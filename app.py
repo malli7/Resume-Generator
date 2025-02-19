@@ -6,7 +6,6 @@ from werkzeug.utils import secure_filename
 from datetime import datetime
 from gpt_resume import GPTResume
 from html_to_pdf import HTML_to_PDF  
-import asyncio
 
 app = Flask(__name__)
 UPLOAD_FOLDER = './data'
@@ -15,7 +14,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(RESUME_FOLDER, exist_ok=True)
 
 @app.route('/generate-resume', methods=['POST'])
-async def generate_resume():
+def generate_resume():
     if 'yaml_file' not in request.files or 'jobDescription' not in request.form:
         return jsonify({'error': 'Missing YAML file or job description'}), 400
     
@@ -31,7 +30,7 @@ async def generate_resume():
     print(resume_data)
      
     gpt_resume = GPTResume(job_description, resume_data)
-    gpt_resume =  await gpt_resume.generate_resume()
+    gpt_resume =  gpt_resume.generate_resume()
     
     timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     pdf_filename = os.path.join(RESUME_FOLDER, f'resume_{timestamp_str}.pdf')
@@ -47,13 +46,13 @@ async def generate_resume():
 @app.route('/generate-resume-json', methods=['POST'])
 def generate_resume_json():
     data = request.get_json()
-    print(data)
+
     job_description = data['jobDescription']
     resume_data = json.loads(data['resumeData'])
     
     gpt_resume = GPTResume(job_description, resume_data)
-    resume = asyncio.run(gpt_resume.generate_resume())
-
+    gpt_resume =  gpt_resume.generate_resume()
+    
     timestamp_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     pdf_filename = os.path.join(RESUME_FOLDER, f'resume_{timestamp_str}.pdf')
     os.makedirs("resumes", exist_ok=True)
