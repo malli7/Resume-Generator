@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install required Python dependencies
-RUN pip install --no-cache-dir flask selenium webdriver-manager pyyaml werkzeug openai
+RUN pip install --no-cache-dir flask selenium webdriver-manager pyyaml werkzeug openai asyncio
 
 # Copy application files
 COPY . .

@@ -4,7 +4,7 @@ from resume import Resume
 import re
 from prompt_templates import prompt_template
 from prompts import summary_prompt, skills_prompt, experience_prompt,projects_prompt,cert_prompt
-
+import asyncio
 
 API_KEY = os.getenv("API_KEY") 
 client = OpenAI(api_key=API_KEY) 
@@ -87,7 +87,15 @@ class GPTResume:
         return formatted_certifications
 
             
-    def generate_resume(self):
+    async def generate_resume(self):
+        summary, skills, experience, projects, certifications = await asyncio.gather(
+            self.generate_summary(),
+            self.generate_skills(),
+            self.generate_experience(),
+            self.generate_projects(),
+            self.format_certifications_and_achievements(),
+        )
+
         return Resume(prompt_template.format(
             name=self.resume_data["personal_information"]["name"],
             email=self.resume_data["personal_information"]["email"],
@@ -96,10 +104,10 @@ class GPTResume:
             linkedin=self.resume_data["personal_information"]["linkedin"],
             github=self.resume_data["personal_information"]["github"],
             portfolio=self.resume_data["personal_information"]["portfolio"],
-            summary=self.generate_summary(), 
-            education = self.generate_education(),
-            skills=self.generate_skills(),
-            experience=self.generate_experience(),
-            projects=self.generate_projects(),
-            certifications=self.format_certifications_and_achievements()
+            summary=summary,
+            education=self.generate_education(),
+            skills=skills,
+            experience=experience,
+            projects=projects,
+            certifications=certifications
         ))
