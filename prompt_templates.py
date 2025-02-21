@@ -25,10 +25,7 @@ prompt_template = """
 <body>
     <h1>{name}</h1>
     <div class="contact-info">
-        {email} | {phone} | {location} |
-        <a href="{linkedin}">LinkedIn</a> |
-        <a href="{github}">GitHub</a> |
-        <a href="{portfolio}">Portfolio</a>
+        {email} | {phone} | {location} {linkedin} {github} {portfolio}
     </div>
 
     <h2>SUMMARY</h2>

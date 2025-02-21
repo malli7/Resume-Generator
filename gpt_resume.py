@@ -86,20 +86,30 @@ class GPTResume:
         formatted_certifications = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', formatted_certifications)
         return formatted_certifications
 
-            
-    def generate_resume(self):
-        return Resume(prompt_template.format(
-            name=self.resume_data["personal_information"]["name"],
-            email=self.resume_data["personal_information"]["email"],
-            phone=self.resume_data["personal_information"]["phone"],
-            location=self.resume_data["personal_information"]["city"],
-            linkedin=self.resume_data["personal_information"]["linkedin"],
-            github=self.resume_data["personal_information"]["github"],
-            portfolio=self.resume_data["personal_information"]["portfolio"],
-            summary=self.generate_summary(), 
-            education = self.generate_education(),
-            skills=self.generate_skills(),
-            experience=self.generate_experience(),
-            projects=self.generate_projects(),
-            certifications=self.format_certifications_and_achievements()
-        ))
+
+def generate_resume(self):
+    linkedin = self.resume_data["personal_information"].get("linkedin", "")
+    github = self.resume_data["personal_information"].get("github", "")
+    portfolio = self.resume_data["personal_information"].get("portfolio", "")
+    
+    linkedin_link = f'| <a href="{linkedin}">LinkedIn</a>' if linkedin else ""
+    github_link = f'| <a href="{github}">GitHub</a>' if github else ""
+    portfolio_link = f'| <a href="{portfolio}">Portfolio</a>' if portfolio else ""
+    
+    return Resume(prompt_template.format(
+        name=self.resume_data["personal_information"]["name"],
+        email=self.resume_data["personal_information"]["email"],
+        phone=self.resume_data["personal_information"]["phone"],
+        location=self.resume_data["personal_information"]["city"],
+        
+        linkedin=linkedin_link,
+        github=github_link,
+        portfolio=portfolio_link,
+        
+        summary=self.generate_summary(), 
+        education=self.generate_education(),
+        skills=self.generate_skills(),
+        experience=self.generate_experience(),
+        projects=self.generate_projects(),
+        certifications=self.format_certifications_and_achievements()
+    ))
