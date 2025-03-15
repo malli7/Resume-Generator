@@ -63,19 +63,10 @@ cover_letter_template = """
     <title>Resume</title>
     <style>
         body {{ font-family: 'Times New Roman', Times, serif;  margin: 2px; padding: 0; background-color: white; max-width: 800px; color:black }}
-        h1 {{ font-size: 18px; text-align: center;  margin-bottom: 2px; }}
-        .contact-info {{ text-align: center; font-size: 12px; margin-bottom: 2px; }}
+        h1 {{ font-size: 20px; text-align: center;  margin-bottom: 2px; }}
+        .contact-info {{ text-align: center; font-size: 14px; margin-bottom: 2px; }}
         .contact-info a {{ color: #3498db; text-decoration: none; margin: 0; }}
-        h2 {{ font-size: 14px; color: black; border-bottom: 2px solid black; padding-bottom: 1px ; margin: 0; }}
-        h3 {{ font-size: 13px; color: black; padding-bottom: 1px ; margin: 0; }}
-        .section {{ margin-bottom: 15px; }}
-        .entry {{ background: #ffffff; padding: 1px; }}
-        .entry-header {{ font-weight: bold; color: black }}
-        .entry-details {{ font-size: 10px; color:black }}
-        .education {{ font-size: 12px; color: black; padding:1px; margin: 0px; }}
-        ul {{ padding: 0px; font-size: 12px; color:black }}
-        ul li {{ margin-bottom: 1px; }}
-        p {{ margin: 5px; padding: 0; font-size: 12px; color:black }}
+        p {{ margin: 5px; padding: 0; font-size: 14px; color:black }}
     </style>
 </head>
 <body>
@@ -84,6 +75,8 @@ cover_letter_template = """
         {email} | {phone} | {location} {linkedin} {github} {portfolio}
     </div>
     <hr/>
+    <p>Dear Hiring Manager,</p>
+    <br/>
     <p>{cover_letter}</p>
     <br/>
     <p>Best Regards,</p>

@@ -186,6 +186,7 @@ cover_letter_prompt = """
     ✔ Just give me the main content of the cover letter nothing else like addressing the hiring manager or the company name or my data in the beginning or the ending.
     ✔ The cover letter should be enough for 2 pages nothing more nothing less and wrap each paragraph of the cover letter with <p> </p>.
     ✔ Ensure the content is sufficient to fill two page.
+    ✔ Only include job company name if it is present in the job description otherwise donot add [company name] in the cover letter.
     Final Note:
     This cover letter should be so well-crafted that even the worst recruiter in the world has no choice but to pass it to the hiring manager.
     """
