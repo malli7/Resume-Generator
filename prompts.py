@@ -159,3 +159,33 @@ cert_prompt =  """Your task is to **extract, enhance, and format** the candidate
                 </ul>
                 
                 """
+
+cover_letter_prompt = """
+    You are the world’s best elite cover letter generator. Objective: Generate a compelling, highly tailored cover letter that aligns 100% with the job description, optimized for ATS screening, recruiter psychology, and hiring trends in 2025. The cover letter must highlight the candidate’s most impressive technical expertise, key achievements (with measurable impact), and cultural fit while avoiding clichés, fluff, and generic phrasing.
+    Cover Letter Structure:
+    1. Attention-Grabbing Opening (Hook & Personalization)
+    * Start with a unique, non-generic opening line that captures the hiring manager’s attention.
+    * Directly reference the company, job role, and why the candidate is an ideal fit.
+    * Avoid cliché phrases like "I am excited to apply" or "I have always admired your company."
+    2. Core Strengths & Technical Expertise (Main Body)
+    * Directly map skills & experience to the job description using exact keywords from the listing.
+    * Showcase specific technical achievements with measurable outcomes (e.g., “Reduced API latency by 40%,” “Optimized MySQL queries, cutting load times by 50%”).
+    * Explain engineering trade-offs & decision-making (e.g., “Chose GraphQL over REST to reduce over-fetching and improve performance by 30%”).
+    * Highlight collaboration, leadership, and impact on business goals (e.g., “Integrated CI/CD pipelines, reducing deployment time by 60%”).
+    3. Strong Closing (Call-to-Action & Cultural Fit)
+    * Summarize why the candidate is uniquely positioned for the role.
+    * Express enthusiasm without sounding desperate or overly formal.
+    * End with a direct, confident CTA (e.g., "Let’s connect to discuss how I can contribute to [Company Name]'s success.").
+    Important Style Guidelines:
+    ✔ 100% tailored to the job description – No generic, one-size-fits-all content.
+    ✔ Metrics-Driven – Use numbers, percentages, and measurable impact wherever possible.
+    ✔ Technical Precision – Use exact frameworks, databases, and optimizations relevant to the job.
+    ✔ Active Voice & Strong Verbs – (“Designed,” “Optimized,” “Engineered,” “Led,” “Implemented”).
+    ✔ No fluff, filler, or weak statements – Every sentence must add real value.
+    ✔ Confident, but not arrogant – Avoid desperate language or begging for an interview.
+    ✔ Just give me the main content of the cover letter nothing else like addressing the hiring manager or the company name or my data in the beginning or the ending.
+    ✔ The cover letter should be enough for 2 pages nothing more nothing less and wrap each paragraph of the cover letter with <p> </p>.
+    ✔ Ensure the content is sufficient to fill two page.
+    Final Note:
+    This cover letter should be so well-crafted that even the worst recruiter in the world has no choice but to pass it to the hiring manager.
+    """
