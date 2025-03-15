@@ -62,11 +62,11 @@ cover_letter_template = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
     <style>
-        body {{ font-family: 'Times New Roman', Times, serif;  margin: 2px; padding: 0; background-color: white; max-width: 800px; color:black }}
-        h1 {{ font-size: 20px; text-align: center;  margin-bottom: 2px; }}
-        .contact-info {{ text-align: center; font-size: 14px; margin-bottom: 2px; }}
+        body {{ font-family: 'Times New Roman', Times, serif;  margin: 5px; padding: 0; background-color: white; max-width: 800px; color:black }}
+        h1 {{ font-size: 24px; text-align: center;  margin-bottom: 2px; }}
+        .contact-info {{ text-align: center; font-size: 16px; margin-bottom: 2px; }}
         .contact-info a {{ color: #3498db; text-decoration: none; margin: 0; }}
-        p {{ margin: 5px; padding: 0; font-size: 14px; color:black }}
+        p {{ margin: 5px; padding: 0; font-size: 16px; color:black }}
     </style>
 </head>
 <body>

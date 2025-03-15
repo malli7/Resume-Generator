@@ -167,6 +167,7 @@ cover_letter_prompt = """
     * Start with a unique, non-generic opening line that captures the hiring manager’s attention.
     * Directly reference the company, job role, and why the candidate is an ideal fit.
     * Avoid cliché phrases like "I am excited to apply" or "I have always admired your company."
+    * Avoid cliché philosophical quotes or irrelevant personal stories."
     2. Core Strengths & Technical Expertise (Main Body)
     * Directly map skills & experience to the job description using exact keywords from the listing.
     * Showcase specific technical achievements with measurable outcomes (e.g., “Reduced API latency by 40%,” “Optimized MySQL queries, cutting load times by 50%”).
@@ -184,7 +185,7 @@ cover_letter_prompt = """
     ✔ No fluff, filler, or weak statements – Every sentence must add real value.
     ✔ Confident, but not arrogant – Avoid desperate language or begging for an interview.
     ✔ Just give me the main content of the cover letter nothing else like addressing the hiring manager or the company name or my data in the beginning or the ending.
-    ✔ The cover letter should be enough for 2 pages nothing more nothing less and wrap each paragraph of the cover letter with <p> </p>.
+    ✔ The cover letter should be enough for 1 to 1.5 pages nothing more nothing less and wrap each paragraph of the cover letter with <p> </p>.
     ✔ Ensure the content is sufficient to fill two page.
     ✔ Only include job company name if it is present in the job description otherwise donot add [company name] in the cover letter.
     Final Note:
