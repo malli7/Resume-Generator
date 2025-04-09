@@ -3,7 +3,7 @@ import os
 import time
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
-
+import psutil 
 
 def create_driver_selenium():
     options = webdriver.ChromeOptions()
@@ -19,6 +19,12 @@ def create_driver_selenium():
     service = ChromeService("/usr/bin/chromedriver")
 
     return webdriver.Chrome(service=service, options=options)
+
+def cleanup_chromedriver_processes():
+    """ Kill lingering ChromeDriver processes """
+    for proc in psutil.process_iter(['pid', 'name']):
+        if proc.info['name'] in ['chromedriver', 'chrome']:
+            proc.kill()
 
 def HTML_to_PDF(html_content, output_pdf_path):
     """ Converts an HTML string to a PDF file using Selenium """
@@ -44,3 +50,4 @@ def HTML_to_PDF(html_content, output_pdf_path):
     finally:
         driver.quit()
         os.remove(temp_html_path)
+        cleanup_chromedriver_processes()
